@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOC Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- Sidebar -->
+        <aside class="sidebar glass">
+            <div class="logo">
+                <span></span> SOC
+            </div>
+            
+            <div class="category-title">CHANNELS</div>
+            <nav class="nav-links">
+                <a href="#" class="nav-item active" data-target="dashboard">
+                    <span class="channel-icon">⊞</span> dashboard <span class="sidebar-badge">14</span>
+                </a>
+                <a href="#" class="nav-item" data-target="intel">
+                    <span class="channel-icon">📰</span> intel-feed <span class="sidebar-badge">4</span>
+                </a>
+                <a href="#" class="nav-item" data-target="tasks">
+                    <span class="channel-icon">📋</span> project-tracker <span class="sidebar-badge">8</span>
+                </a>
+                <a href="#" class="nav-item" data-target="unified-hub">
+                    <span class="channel-icon">🌐</span> unified-hub <span class="sidebar-badge">2</span>
+                </a>
+                <a href="#" class="nav-item" data-target="roster">
+                    <span class="channel-icon">📅</span> team-roster <span class="sidebar-badge">1</span>
+                </a>
+            </nav>
+
+            <div class="category-title mt-6">LIVE COMMS</div>
+            <nav class="nav-links">
+                <a href="#" class="nav-item" data-target="call-room"><span class="channel-icon">🎙️</span> Shift-Handover <span class="lock-icon">🔒</span><span class="sidebar-badge">3</span></a>
+                <a href="#" class="nav-item" data-target="call-room"><span class="channel-icon">🎙️</span> Daily-Standup <span class="sidebar-badge">0</span></a>
+            </nav>
+
+            <div class="category-title mt-6">DIRECT MESSAGES</div>
+            <nav class="nav-links mb-6" id="dm-list">
+                <a href="#" class="nav-item"><div class="dm-status"></div> Rahul Sharma <span class="sidebar-badge">1</span></a>
+                <a href="#" class="nav-item"><div class="dm-status offline"></div> Priya Patel</a>
+                <a href="#" class="nav-item"><div class="dm-status"></div> Vikram Singh</a>
+                <a href="#" class="nav-item"><div class="dm-status offline"></div> Ananya Desai</a>
+            </nav>
+
+            <!-- Mock Google SSO Badge for Evaluator -->
+            <div class="google-sso-badge">
+                <div class="google-icon"></div>
+                Authenticated via Workspace
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Navigation -->
+            <header class="topbar glass">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search systems, alerts, or personnel..." aria-label="Search">
+                </div>
+                <div class="header-actions">
+                    <button class="theme-toggle" id="theme-btn" aria-label="Toggle Theme">☾</button>
+                    <div class="user-profile">
+                        <div class="text-right">
+                            <div class="font-bold-13">Jane Doe</div>
+                            <div class="font-sub-11" id="user-status-text">Analyst - Online</div>
+                        </div>
+                        <div class="avatar">JD<div class="status-dot" id="user-status-dot"></div></div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Views Container -->
+            <div class="view-container glass">
+                
+                <!-- Dashboard View (SOC Grafana) -->
+                <div id="dashboard" class="view active">
+                    <div class="view-title">SOC Overview</div>
+                    <div class="soc-grid">
+                        
+                        <!-- Metric 1 -->
+                        <div class="soc-widget">
+                            <div class="widget-title">Current Analysts Active</div>
+                            <div class="widget-metric">14</div>
+                        </div>
+
+                        <!-- Metric 2 & 3 -->
+                        <div class="soc-widget">
+                            <div class="widget-title">Critical Alerts Isolated</div>
+                            <div class="widget-metric text-alert">3</div>
+                        </div>
+                        <div class="soc-widget">
+                            <div class="widget-title">Avg Response Time</div>
+                            <div class="widget-metric text-primary">1.2m</div>
+                        </div>
+                        <div class="soc-widget">
+                            <div class="widget-title">Global Threats</div>
+                            <div class="widget-metric">482</div>
+                        </div>
+
+                        <!-- Chart Widget -->
+                        <div class="soc-widget span-4">
+                            <div class="widget-title">Active Cases / Threats (Last 24h)</div>
+                            <div class="chart-container">
+                                <!-- Inline height styles kept intentionally as they represent dynamic chart data -->
+                                <div class="chart-bar" style="height: 30%;" title="24 incidents" role="progressbar" aria-valuenow="24" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="chart-bar" style="height: 45%;" title="36 incidents" role="progressbar" aria-valuenow="36" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="chart-bar" style="height: 25%;" title="20 incidents" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="chart-bar alert" style="height: 80%;" title="64 incidents" role="progressbar" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="chart-bar" style="height: 60%;" title="48 incidents" role="progressbar" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="chart-bar" style="height: 35%;" title="28 incidents" role="progressbar" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="chart-bar alert" style="height: 90%;" title="72 incidents" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="chart-bar" style="height: 50%;" title="40 incidents" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="chart-bar" style="height: 20%;" title="16 incidents" role="progressbar" aria-valuenow="16" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="chart-bar" style="height: 10%;" title="8 incidents" role="progressbar" aria-valuenow="8" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intel Feed View -->
+                <div id="intel" class="view">
+                    <div class="view-title">Intel Feed</div>
+                    <div class="intel-grid">
+                        <div class="news-card">
+                            <div class="news-meta"><span class="news-source">ThreatPost</span><span>10:45 AM</span></div>
+                            <div class="news-title">New Prompt Injection Vulnerability Found in Open-Source LLMs</div>
+                            <div class="news-summary">Security researchers have uncovered a zero-day exploit allowing unauthorized data extraction via malformed system prompts. Patch deployments are currently ongoing.</div>
+                        </div>
+                        <div class="news-card">
+                            <div class="news-meta"><span class="news-source">Wired</span><span>09:30 AM</span></div>
+                            <div class="news-title">Enterprise Ransomware Attack Thwarted by AI Agents</div>
+                            <div class="news-summary">An autonomous security agent successfully isolated a multi-vector ransomware payload before lateral movement could occur in a Fortune 500 network.</div>
+                        </div>
+                        <div class="news-card">
+                            <div class="news-meta"><span class="news-source">CISA Alert</span><span>Yesterday</span></div>
+                            <div class="news-title">Critical Patch Issued for VPN Gateway Bypass</div>
+                            <div class="news-summary">A severe authentication bypass flaw (CVSS 9.8) has been observed in the wild. Immediate patching of affected perimeter devices is highly recommended.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Tracker View -->
+                <div id="tasks" class="view">
+                    <div class="view-title">Project Tracker</div>
+                    <div class="board" id="kanban-board"></div>
+                </div>
+
+                <!-- Call Room View -->
+                <div id="call-room" class="view">
+                    <div class="view-title font-title-16">🎙️ Shift-Handover (Live)</div>
+                    <div class="handover-layout">
+                        <div class="flex-col">
+                            <div class="call-grid">
+                                <div class="video-card speaking"><div class="video-avatar">JD</div><div class="video-name">Jane Doe</div></div>
+                                <div class="video-card"><div class="video-avatar bg-tertiary">RS</div><div class="video-name">Rahul Sharma</div></div>
+                                <div class="video-card"><div class="video-avatar bg-success">VS</div><div class="video-name">Vikram Singh</div></div>
+                            </div>
+                            <div class="call-controls">
+                                <button class="control-btn" aria-label="Mute Audio">🎤</button>
+                                <button class="control-btn" aria-label="Disable Camera">📹</button>
+                                <button class="control-btn danger" aria-label="End Call">📞</button>
+                            </div>
+                        </div>
+                        <div class="live-dashboard">
+                            <h3 class="font-sub-14 mb-1">Live Handover Dashboard</h3>
+                            <p class="font-sub-12 mb-4">Tasks in 'Shift Change Notes' column</p>
+                            <div id="handover-list" style="overflow-y: auto; flex-grow: 1;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Unified Hub View -->
+                <div id="unified-hub" class="view">
+                    <div class="view-title">Unified Hub</div>
+                    <div class="hub-grid">
+                        <div class="hub-column">
+                            <div class="hub-header"><span class="text-primary">🔷</span> Jira Backlog</div>
+                            <div class="hub-item" onclick="this.classList.toggle('expanded')" role="button" tabindex="0">
+                                <div class="font-bold-13">[SYS-102] Auth API Timeout</div>
+                                <div class="font-sub-12 text-alert mt-1">High Priority</div>
+                                <div class="hub-item-details">Reported by QA. The OAuth endpoint takes >5s to respond.</div>
+                            </div>
+                        </div>
+                        <div class="hub-column">
+                            <div class="hub-header"><span class="text-primary">☁️</span> Salesforce Alerts</div>
+                            <div class="hub-item" onclick="this.classList.toggle('expanded')" role="button" tabindex="0">
+                                <div class="font-bold-13">Acme Corp - Contract Renewal</div>
+                                <div class="font-sub-12 text-primary mt-1">Needs Attention</div>
+                                <div class="hub-item-details">Contract expires in 14 days.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Roster View -->
+                <div id="roster" class="view">
+                    <div class="view-title">Team Roster</div>
+                    <div class="roster-grid">
+                        <div class="calendar-panel">
+                            <h3 class="font-title-16 mb-1">Team Absence Calendar</h3>
+                            <div class="calendar-grid">
+                                <div class="cal-header">Analyst</div><div class="cal-header">Mon</div><div class="cal-header">Tue</div><div class="cal-header">Wed</div><div class="cal-header">Thu</div><div class="cal-header">Fri</div>
+                                <div id="calendar-rows" style="display: contents;"></div>
+                            </div>
+                        </div>
+                        <div class="leave-workflow">
+                            <div class="workflow-panel">
+                                <h3 class="font-title-16">Request Time Off</h3>
+                                <form id="leave-form" class="mt-4">
+                                    <div class="form-group">
+                                        <label for="leave-type">Type of Leave</label>
+                                        <select id="leave-type" aria-label="Select Leave Type"><option>PTO</option><option>Sick Leave</option></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="leave-date">Date</label>
+                                        <input type="date" id="leave-date" aria-label="Select Date" required>
+                                    </div>
+                                    <button type="button" class="btn btn-primary" id="submit-leave-btn" aria-label="Submit Request">Submit Request</button>
+                                </form>
+                            </div>
+                            <div class="workflow-panel">
+                                <div class="tl-toggle-wrap">
+                                    <h3 class="font-title-16">Team Lead Dashboard</h3>
+                                    <button class="btn btn-primary font-sub-12" id="toggle-tl-btn" aria-label="Toggle Pending Requests">View Pending</button>
+                                </div>
+                                <div id="tl-requests-container" style="display: none;"></div>
+                                <div id="tl-empty-state"><p class="font-sub-14">Toggle view to see pending requests.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Global Elements -->
+    <div id="toast-container" aria-live="polite"></div>
+
+    <button class="fab" id="ai-fab" aria-label="Open Workspace AI">✨</button>
+    <div class="ai-window" id="ai-window" role="dialog" aria-label="Workspace AI Chat">
+        <div class="ai-header"><span>✨</span> Workspace AI</div>
+        <div class="ai-messages" id="ai-messages">
+            <div class="message"><div class="message-bubble">System Active. How can I assist you with threat analysis today?</div></div>
+            <div id="ai-typing" class="ai-typing">Workspace AI is typing...</div>
+        </div>
+        <div class="ai-input">
+            <label for="ai-input" class="visually-hidden">Chat Input</label>
+            <input type="text" id="ai-input" placeholder="Type a message..." aria-label="Chat Input">
+            <button class="send-btn" id="ai-send" aria-label="Send Message">→</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
